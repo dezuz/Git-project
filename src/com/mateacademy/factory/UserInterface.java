@@ -1,16 +1,18 @@
 package com.mateacademy.factory;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class UserInterface {
 
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
     private double inputDouble;
     private int inputInteger;
     private String inputString;
     private CarDoor carDoor = new CarDoor();
     private CarWheel carWheel = new CarWheel();
-    private Car car = new Car(2019);
+    private LocalDate date = LocalDate.now();
+    private Car car = new Car(date);
 
     public void userAction(int usersInput) {
 
@@ -40,10 +42,7 @@ public class UserInterface {
                 break;
             }
             case 7: {
-                System.out.println("Write wheel status..");
-                inputString = scanner.nextLine();
-                inputDouble = Double.parseDouble(inputString);
-                carWheel.setWheelStatus(inputDouble);
+                setWheelStatus();
                 break;
             }
             case 8 : {
@@ -51,51 +50,31 @@ public class UserInterface {
                 break;
             }
             case 9 : {
-                System.out.println("Write wipe off wheels in percent..");
-                inputString = scanner.nextLine();
-                inputDouble = Double.parseDouble(inputString);
-                carWheel.wipeOffWheel(inputDouble);
+                setWipeOffWheels();
                 break;
             }
             case 10 : {
-                System.out.println("Write engine type..");
-                inputString = scanner.nextLine();
-                car.setEngineType(inputString);
+                setEngineType();
                 break;
             }
             case 11 : {
-                System.out.println("Write maximum speed..");
-                inputString = scanner.nextLine();
-                inputDouble = Double.parseDouble(inputString);
-                car.setMaxSpeed(inputDouble);
+                setMaxSpeed();
                 break;
             }
             case 12 : {
-                System.out.println("Write overclocking time up to 100 km/h..");
-                inputString = scanner.nextLine();
-                inputDouble = Double.parseDouble(inputString);
-                car.setTimeUpTo100(inputDouble);
+                setTimeUpTo100();
                 break;
             }
             case 13 : {
-                System.out.println("Write passengers capacity..");
-                inputString = scanner.nextLine();
-                inputInteger = Integer.parseInt(inputString);
-                car.setPassengersCapacity(inputInteger);
+                setPassengersCapacity();
                 break;
             }
             case 14 : {
-                System.out.println("Write number of passengers in car..");
-                inputString = scanner.nextLine();
-                inputInteger = Integer.parseInt(inputString);
-                car.setPassengersInCar(inputInteger);
+                setCurrentPassengers();
                 break;
             }
             case 15 : {
-                System.out.println("Write current car speed..");
-                inputString = scanner.nextLine();
-                inputDouble = Double.parseDouble(inputString);
-                car.setCurrentSpeed(inputDouble);
+                setCurrentSpeed();
                 break;
             }
             case 16 : {
@@ -111,10 +90,7 @@ public class UserInterface {
                 break;
             }
             case 19 : {
-                System.out.println("Write number of wheels..");
-                inputString = scanner.nextLine();
-                inputInteger = Integer.parseInt(inputString);
-                car.addWheels(inputInteger);
+                setNumberOfWheels();
                 break;
             }
             case 20 : {
@@ -122,10 +98,7 @@ public class UserInterface {
                 break;
             }
             case 21 : {
-                System.out.println("Write number of doors..");
-                inputString = scanner.nextLine();
-                inputInteger = Integer.parseInt(inputString);
-                car.addDoors(inputInteger);
+                setNumberOfDoors();
                 break;
             }
             case 22 : {
@@ -146,6 +119,75 @@ public class UserInterface {
                 break;
             }
         }
+    }
+
+    private void setWheelStatus() {
+        System.out.println("Write wheel status..");
+        inputString = scanner.nextLine();
+        inputDouble = Double.parseDouble(inputString);
+        carWheel.setWheelStatus(inputDouble);
+    }
+
+    private void setWipeOffWheels() {
+        System.out.println("Write wipe off wheels in percent..");
+        inputString = scanner.nextLine();
+        inputDouble = Double.parseDouble(inputString);
+        carWheel.wipeOffWheel(inputDouble);
+    }
+
+    private void setEngineType() {
+        System.out.println("Write engine type..");
+        inputString = scanner.nextLine();
+        car.setEngineType(inputString);
+    }
+
+    private void setMaxSpeed() {
+        System.out.println("Write maximum speed..");
+        inputString = scanner.nextLine();
+        inputDouble = Double.parseDouble(inputString);
+        car.setMaxSpeed(inputDouble);
+    }
+
+    private void setTimeUpTo100() {
+        System.out.println("Write overclocking time up to 100 km/h..");
+        inputString = scanner.nextLine();
+        inputDouble = Double.parseDouble(inputString);
+        car.setTimeUpTo100(inputDouble);
+    }
+
+    private void setPassengersCapacity() {
+        System.out.println("Write passengers capacity..");
+        inputString = scanner.nextLine();
+        inputInteger = Integer.parseInt(inputString);
+        car.setPassengersCapacity(inputInteger);
+    }
+
+    private void setCurrentPassengers() {
+        System.out.println("Write number of passengers in car..");
+        inputString = scanner.nextLine();
+        inputInteger = Integer.parseInt(inputString);
+        car.setPassengersInCar(inputInteger);
+    }
+
+    private void setCurrentSpeed() {
+        System.out.println("Write current car speed..");
+        inputString = scanner.nextLine();
+        inputDouble = Double.parseDouble(inputString);
+        car.setCurrentSpeed(inputDouble);
+    }
+
+    private void setNumberOfWheels() {
+        System.out.println("Write number of wheels..");
+        inputString = scanner.nextLine();
+        inputInteger = Integer.parseInt(inputString);
+        car.addWheels(inputInteger);
+    }
+
+    private void setNumberOfDoors() {
+        System.out.println("Write number of doors..");
+        inputString = scanner.nextLine();
+        inputInteger = Integer.parseInt(inputString);
+        car.addDoors(inputInteger);
     }
 
     public static void main(String[] args) {

@@ -5,8 +5,6 @@ public class CarDoor {
     private boolean windowStatus;
 
     public CarDoor() {
-        this.doorStatus = false;
-        this.windowStatus = false;
     }
 
     public CarDoor(boolean doorStatus, boolean windowStatus) {

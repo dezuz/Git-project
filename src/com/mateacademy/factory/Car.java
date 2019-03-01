@@ -1,10 +1,11 @@
 package com.mateacademy.factory;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
-    private final int PRODUCTION_DATE;
+    private final LocalDate productionTime;
     private String engineType;
     private double maxSpeed;
     private double timeUpTo100;
@@ -14,14 +15,16 @@ public class Car {
     private List<CarWheel> carWheels = new ArrayList<>();
     private List<CarDoor> carDoors = new ArrayList<>();
 
-    public Car(int productionDate) {
-        this.PRODUCTION_DATE = productionDate;
+    public Car(LocalDate productionDate) {
+        this.productionTime = productionDate;
         addDoors(4);
         addWheels(4);
     }
 
-    public Car(int productionDate, String engineType, double maxSpeed, double timeUpTo100, int passengerCapacity, int passengersInCar, double speed) {
-        this.PRODUCTION_DATE = productionDate;
+    public Car(LocalDate productionDate, String engineType
+            , double maxSpeed, double timeUpTo100
+            , int passengerCapacity, int passengersInCar, double speed) {
+        this.productionTime= productionDate;
         this.engineType = engineType;
         this.maxSpeed = maxSpeed;
         this.timeUpTo100 = timeUpTo100;
@@ -96,14 +99,24 @@ public class Car {
     }
 
     public void addWheels(int number) {
-        for (int i = 0; i < number; i++) {
-            carWheels.add(new CarWheel());
+        if (carWheels.size() == 4) {
+            System.out.println("You can't add a new wheel");
+        }
+        else {
+            for (int i = 0; i < number; i++) {
+                carWheels.add(new CarWheel());
+            }
         }
     }
 
     public void addDoors(int number) {
-        for (int i = 0; i < number; i++) {
-            carDoors.add(new CarDoor());
+        if (carDoors.size() == 4) {
+            System.out.println("You can't add a new door");
+        }
+        else {
+            for (int i = 0; i < number; i++) {
+                carDoors.add(new CarDoor());
+            }
         }
     }
 
@@ -124,7 +137,7 @@ public class Car {
     }
 
     public void displayStatus() {
-        System.out.println("The production date is: " + this.PRODUCTION_DATE
+        System.out.println("The production date is: " + this.productionTime
                 + "\nThe engine type is: " + this.engineType
                 + "\nThe car maximum speed is: " + this.maxSpeed
                 + "\nThe overclocking time to 100 km/h is: " + this.timeUpTo100
